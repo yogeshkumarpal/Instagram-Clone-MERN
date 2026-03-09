@@ -7,8 +7,8 @@ const authMiddleware = async (req, res, next) => {
     let token = req.cookies?.token;
 
     if (!token) {
-      return res.status(404).json({
-        message: "Token not found, Unauthorize user",
+      return res.status(401).json({
+        message: "Token not found, unauthorized user",
       });
     }
 

@@ -41,7 +41,12 @@ const registerController = async (req, res) => {
 
     let token = newUser.JWTTokenGeneration();
 
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: false,
+      maxAge: 1000 * 60 * 60, // 1 hour
+    });
 
     return res.status(201).json({
       message: "User registered successfully",
@@ -64,7 +69,6 @@ const loginController = async (req, res) => {
       email,
     });
 
-
     if (!user) {
       return res.status(404).json({
         message: "User not found",
@@ -81,7 +85,12 @@ const loginController = async (req, res) => {
 
     let token = user.JWTTokenGeneration();
 
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: false,
+      maxAge: 1000 * 60 * 60, // 1 hour
+    });
 
     return res.status(200).json({
       message: "User loggedIn",
@@ -147,7 +156,7 @@ const forgotPasswordController = async (req, res) => {
     let res = await sendMail(
       "devendradhote179@gmail.com",
       "Reset password",
-      resetTemplate
+      resetTemplate,
     );
 
     return res.send("ok");
@@ -160,7 +169,6 @@ const forgotPasswordController = async (req, res) => {
     });
   }
 };
-
 
 module.exports = {
   registerController,

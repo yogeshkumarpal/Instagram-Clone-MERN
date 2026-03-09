@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { loginUserApi } from "../../features/actions/AuthActions";
-import { emailTemplate } from "../../../../backend/src/utils/emailTemplate";
 import { axiosIntance } from "../../config/axiosInstance";
 
 const Login = ({ setToggle }) => {
@@ -41,9 +40,12 @@ const Login = ({ setToggle }) => {
     }
   };
 
-  useEffect(() => {
-    fetchUserFromGoogleAuth();
-  }, []);
+  // If you want to handle Google auth, trigger `fetchUserFromGoogleAuth` only after
+  // the user returns from the OAuth flow (and the cookie has been set).
+  // Leaving this commented out avoids noisy 401s on every page load.
+  // useEffect(() => {
+  //   fetchUserFromGoogleAuth();
+  // }, []);
 
   const handleGoogleAuth = async () => {
     window.location.href = "http://localhost:3000/api/auth/google";
