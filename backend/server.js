@@ -11,6 +11,7 @@ const MessageModel = require("./src/models/message.model");
 app.use(
   cors({
     origin: "http://localhost:5173",
+    "https://instagram-clone-mern-2ews.onrender.com",
     credentials: true,
   })
 );
