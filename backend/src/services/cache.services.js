@@ -1,10 +1,6 @@
 const Redis = require("ioredis");
 
-const cacheClient = new Redis({
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-  password: process.env.REDIS_PASSWORD,
-});
+// This will look for a single variable called REDIS_URL
+const cacheClient = new Redis(process.env.REDIS_URL);
 
 module.exports = cacheClient;
-
