@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosIntance = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://instagram-clone-owi9.onrender.com/api",
   withCredentials: true,
 });
 
