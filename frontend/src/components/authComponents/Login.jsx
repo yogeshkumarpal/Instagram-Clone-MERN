@@ -48,7 +48,7 @@ const Login = ({ setToggle }) => {
   // }, []);
 
   const handleGoogleAuth = async () => {
-    window.location.href = "http://localhost:3000/api/auth/google";
+    window.location.href = "https://instagram-clone-owi9.onrender.com/api/auth/google";
   };
 
   return (
